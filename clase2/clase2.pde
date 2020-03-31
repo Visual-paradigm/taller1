@@ -25,8 +25,8 @@ void complementary() {
   //image2.updatePixels();
 }
 
-void keyPressed() {
-  if (key == 'c')
-    complementary();
+
+void mouseClicked() {
+  complementary();
   toggle = !toggle;
 }
