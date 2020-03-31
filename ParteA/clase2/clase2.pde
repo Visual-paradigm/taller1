@@ -1,10 +1,11 @@
 //Doble lienzo escala grises//
+
 PImage image;
 PImage image2;
 boolean toggle;
 
 void setup() {
-  size(1300, 650);
+  size(1024, 512);
   image = loadImage("Lenna.png");
   image2 = loadImage("Lenna.png");
 }
@@ -12,8 +13,11 @@ void setup() {
 void draw() {
   background(50);
   image(image, 0, 0);  
+  textSize(30);
+  text("click on the image", 128, 500);
+  fill(255, 255,255);
   if(toggle)
-    image(image2, 640, 0);
+    image(image2, 512, 0);
 }
 
 void complementary() {
