@@ -2,7 +2,7 @@ PImage image;
 boolean toggle;
 PFont f;
 String asciichar = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,^`'. ";
-int textSize=10;
+int textSize=5;
 void setup() {
   size(1260, 650);
   image = loadImage("lenna.jpg");
@@ -43,5 +43,10 @@ void asciiFunc() {
 }
 
 void keyPressed() {
-  textSize++;
+  if(key=='c' && textSize<=20){
+    textSize++;
+  }
+  if(key=='x' && textSize>1){
+    textSize--;
+  }
 }
