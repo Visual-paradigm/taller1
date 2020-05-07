@@ -39,9 +39,12 @@ void processFrame(){
     for (int y = 0; y < image.height; y++ ) {
       color c = convolution(x, y, matrix, matrixsize, image);
       int loc = x + y*image.width;
-      image.pixels[loc] = c;//image.set(x,y,c);
-    //  color c2 = image.pixels[loc];
-    //  image.pixels[loc] = color(0.299*red(c2)+0.587*green(c2)+0.114*blue(c2));
+      if (toggle){     
+        image.pixels[loc] = c;//image.set(x,y,c);
+      }else {
+        c = image.pixels[loc];
+        image.pixels[loc] = color(0.299*red(c)+0.587*green(c)+0.114*blue(c));
+      }
     }
   }
 }
@@ -79,4 +82,9 @@ color convolution(int x, int y, float[][] matrix, int matrixsize, PImage img)
   btotal = constrain(btotal, 0, 255);
   // Return the resulting color
   return color(rtotal, gtotal, btotal);
+}
+
+
+void mouseClicked() {
+  toggle = !toggle;
 }
