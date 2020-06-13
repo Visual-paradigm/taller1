@@ -5,14 +5,13 @@ boolean toggle;
 PFont f;
 //String asciichar = "$$$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,^`'.   .";
 String asciichar = "$$$$@@BB%%88&&WWMM##**ooaahhkkbbddppqqwwmmZZOO00QQLLCCJJUUYYXXzzccvvuunnxxrrjjfftt/\\||(())11{{}}[[]]??--__++~<<>>ii!!llII;;::,,^`'...   .";
-int textSize=6;
+int textSize=4;
 
 void setup() {
-  //size(640, 240);
-  size(1280,360);  
-  surface.setLocation(100, 100);
+  size(1904,720);  
+  //surface.setLocation(100, 100);
   frameRate(30);
-  myMovie = new Movie(this, "video3.mp4");
+  myMovie = new Movie(this, "chaves.mp4");
   image2 = myMovie.get();
   myMovie.loop();
 }
@@ -27,8 +26,7 @@ void draw() {
     myMovie.read();
     processFrame();
   }
-  //image(myMovie, 320, 0);
-  image(myMovie, 640, 0);
+  image(myMovie, 952, 0);
 }
 
 void processFrame(){   
@@ -39,7 +37,7 @@ void processFrame(){
       int bright = (int) (red(c)+green(c)+blue(c))/3;
       int asciiEscale = asciichar.length();
       int charPosition = (bright*asciiEscale)/256;
-      println(bright*asciiEscale);
+      // println(bright*asciiEscale);
       text(asciichar.charAt(charPosition),i,j);
     }
   }
