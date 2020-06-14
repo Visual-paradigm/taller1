@@ -1,44 +1,27 @@
 import processing.video.*;
+
 Movie myMovie;
-PImage image2;
-boolean toggle;
-PFont f;
-//String asciichar = "$$$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,^`'.   .";
-String asciichar = "$$$$@@BB%%88&&WWMM##**ooaahhkkbbddppqqwwmmZZOO00QQLLCCJJUUYYXXzzccvvuunnxxrrjjfftt/\\||(())11{{}}[[]]??--__++~<<>>ii!!llII;;::,,^`'...   .";
-int textSize=4;
+PShader ascii;
 
 void setup() {
-  size(1904,720);  
-  //surface.setLocation(100, 100);
-  frameRate(30);
+  size(1920,540, P3D);
+  
+  //LOAD IN VIDEO
   myMovie = new Movie(this, "chaves.mp4");
-  image2 = myMovie.get();
   myMovie.loop();
+
+  //LOAD IN SHADERS
+  ascii = loadShader("asciifilter.glsl");
+  ascii.set("iResolution", float(width), float(height));
+     
 }
 
 void draw() {
- f = createFont("Arial",textSize,true);
- background(255);
- fill(0);
- textFont(f);
-  if (myMovie.available()) {   
-    background(255);
-    myMovie.read();
-    processFrame();
-  }
-  image(myMovie, 952, 0);
+  image(myMovie, 0, 0, 960,540);
+  filter(ascii);  
+  image(myMovie, 960, 0, 960,540); 
 }
 
-void processFrame(){   
-  image2 = myMovie.get();
-  for (int i = 0; i < image2.width; i=i+textSize) {    
-    for (int j = 0; j < image2.height; j=j+textSize) {
-      color c = image2.get(i,j);
-      int bright = (int) (red(c)+green(c)+blue(c))/3;
-      int asciiEscale = asciichar.length();
-      int charPosition = (bright*asciiEscale)/256;
-      // println(bright*asciiEscale);
-      text(asciichar.charAt(charPosition),i,j);
-    }
-  }
+void movieEvent(Movie m) {
+  m.read();
 }

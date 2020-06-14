@@ -18,10 +18,9 @@ void setup() {
 }
 
 void draw() {
-  background(100);
- // shader(lumaShader);  
+  background(100); 
  
-    shader(lumaShader); 
+  shader(lumaShader); 
   if (myMovie.available()) {   
     background(255);
     myMovie.read();    
