@@ -1,8 +1,9 @@
 PImage image;
 boolean toggle;
 PFont f;
-String asciichar = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,^`'. ";
-int textSize=5;
+//String asciichar = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/|()1{}[]?-_+~<>i!lI;:,^`'. ";
+String asciichar = ".:*o&8@#";
+int textSize=8;
 void setup() {
   size(1260, 650);
   image = loadImage("lenna.jpg");
@@ -11,7 +12,7 @@ void setup() {
 
 void draw() {
    f = createFont("Arial",textSize,true);
- background(255);
+ background(10);
  fill(0);
  textFont(f);   
  asciiFunc();
@@ -26,6 +27,7 @@ void asciiFunc() {
       int bright = (int) (red(c)+green(c)+blue(c))/3;
       int asciiEscale = asciichar.length();
       int charPosition = (bright*asciiEscale)/255;
+      fill(bright);
       text(asciichar.charAt(charPosition),i,j);
     }
   }

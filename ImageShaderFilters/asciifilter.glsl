@@ -25,6 +25,7 @@ float character(float n, vec2 p)
 void main() {
 
     vec2 texl = gl_FragCoord.xy;
+		//vec3 pixl = texture(iChannel0, floor(texl/8.0)*8.0/iResolution.xy).rgb;
 		vec3 pixl =texture2D(texture, floor(texl/8.0)*8.0/iResolution.xy).xyz;
     float luma = pixl.r*0.2126 + pixl.g*0.7152 + pixl.b*0.0722;
 
