@@ -1,7 +1,7 @@
 PShader luma,mask,ascii;
 PImage image;
 
-int filterState = 0;
+int filterState = 2;
 float masknum = 8.0;
 
 void setup() {
